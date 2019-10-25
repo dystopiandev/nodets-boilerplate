@@ -1,9 +1,10 @@
 import bcrypt from 'bcrypt'
 import { getRepository } from 'typeorm'
-import { User, UserStatus } from '../../db/entity/User';
-import { AppError } from '../errors/AppError';
+import { User, UserStatus } from '../../db/entity/User'
+import { AppError } from '../errors/AppError'
+import { RegistrationPayload } from '../../../ts/types'
 
-export async function createUser (fields:any):Promise<User> {
+export async function createUser (fields:RegistrationPayload):Promise<User> {
   const userRepo = getRepository(User)
   const user = await userRepo.findOne({
     where: [

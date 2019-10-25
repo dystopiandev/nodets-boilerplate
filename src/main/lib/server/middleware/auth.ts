@@ -1,4 +1,4 @@
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import { User, UserRole, UserStatus } from '../../../db/entity/User'
 import { respond } from '../../respond'
 import { AppError } from '../../errors/AppError'

@@ -1,14 +1,14 @@
+import 'reflect-metadata'
 import path from 'path'
+import { Express } from 'express'
+import { createConnection } from 'typeorm'
 let cfgPaths = path.join(__dirname, '..', 'config')
 cfgPaths += path.delimiter
 cfgPaths += path.join(__dirname, '..', '..')
 process.env['NODE_CONFIG_DIR'] = cfgPaths
-import 'reflect-metadata'
-import { Express } from 'express'
-import {createConnection} from 'typeorm'
 const config = require('config')
-const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server').port
+const { http }: {http: Express} = require('./lib/server')
 
 createConnection({
   ...config.get('database'),

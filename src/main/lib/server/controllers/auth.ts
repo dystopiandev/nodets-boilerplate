@@ -1,6 +1,6 @@
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import * as authService from '../../services/auth'
-import {respond} from '../../respond'
+import { respond } from '../../respond'
 import { AppError } from '../../errors/AppError'
 
 export async function createSession (req: Request, res: Response) {
