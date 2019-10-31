@@ -26,7 +26,7 @@ export async function createUser (fields:RegistrationPayload):Promise<User> {
       bcrypt.hash(fields.password, 8, (err:any, passhash:any) => {
         if (err) reject(new AppError({
           message: 'An unexpected error occured!',
-          status: 403
+          status: 500
         }))
   
         userRepo.save(userRepo.create({
@@ -35,9 +35,9 @@ export async function createUser (fields:RegistrationPayload):Promise<User> {
           passhash
         }))
           .then(user => resolve(user))
-          .catch(err => reject(new AppError({
+          .catch(() => reject(new AppError({
             message: 'An unexpected error occured!',
-            status: 403
+            status: 500
           })))
       })
     }
