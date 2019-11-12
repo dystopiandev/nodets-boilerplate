@@ -30,7 +30,7 @@ export class User {
   })
   username!:string
 
-  @Column()
+  @Column({ select: false })
   passhash!:string
 
   @Column({ nullable: true })

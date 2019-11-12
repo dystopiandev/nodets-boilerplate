@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { User, UserRole, UserStatus } from '../../../db/entity/User'
-import { respond } from '../../respond'
-import { AppError } from '../../errors/AppError'
+import { User, UserRole, UserStatus } from '../../database/entity/User'
+import { respond } from '../../lib/respond'
+import { AppError } from '../../lib/errors/AppError'
 import * as userService from '../../services/user'
 
 export async function checkAuth (req:Request, res:Response, next:Function) {

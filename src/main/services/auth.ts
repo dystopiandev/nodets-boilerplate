@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt'
 import { getRepository } from 'typeorm'
-import { User, UserStatus } from '../../db/entity/User'
-import { AppError } from '../errors/AppError'
-import { LoginPayload } from '../../../ts/types'
+import { User, UserStatus } from '../database/entity/User'
+import { AppError } from '../lib/errors/AppError'
+import { LoginPayload } from '../../ts/types'
 
 export async function authenticate (fields:LoginPayload):Promise<User> {
   const userRepo = getRepository(User)
@@ -10,7 +10,8 @@ export async function authenticate (fields:LoginPayload):Promise<User> {
     where: [
       { username: fields.username },
       { email: fields.email }
-    ]
+    ],
+    select: ['id', 'username', 'email', 'passhash', 'status']
   })
 
   return new Promise((resolve, reject) => {

@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt'
 import { getRepository } from 'typeorm'
-import { User, UserStatus } from '../../db/entity/User'
-import { AppError } from '../errors/AppError'
-import { RegistrationPayload } from '../../../ts/types'
+import { User, UserStatus } from '../database/entity/User'
+import { AppError } from '../lib/errors/AppError'
+import { RegistrationPayload } from '../../ts/types'
 
 export async function createUser (fields:RegistrationPayload):Promise<User> {
   const userRepo = getRepository(User)
@@ -51,6 +51,16 @@ export async function fetchUser (query:any):Promise<User> {
       { id: query.id },
       { username: query.username },
       { email: query.email }
+    ],
+    select: [
+      'id',
+      'username',
+      'email',
+      'passhash',
+      'firstName',
+      'lastName',
+      'role',
+      'status'
     ]
   })
 
