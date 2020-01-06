@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import * as userService from '../../services/user'
-import { respond } from '../../lib/respond'
+import * as userService from '../services/user'
+import { respond } from '../lib/respond'
 
 export async function fetchSelf (req: Request, res: Response) {
   userService.fetchUserProfile({

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import * as authService from '../../services/auth'
-import { respond } from '../../lib/respond'
-import { AppError } from '../../lib/errors/AppError'
+import * as authService from '../services/auth'
+import { respond } from '../lib/respond'
+import { AppError } from '../lib/errors/AppError'
 
 export async function createSession (req: Request, res: Response) {
   authService.authenticate({
