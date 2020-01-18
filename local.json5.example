@@ -45,5 +45,12 @@
     "host": "localhost",
     // Port
     "port": 6379
+  },
+
+  // CORS allowed origins
+  "cors": {
+    allowedOrigins: [
+      "http://localhost:9000" // example
+    ]
   }
 }

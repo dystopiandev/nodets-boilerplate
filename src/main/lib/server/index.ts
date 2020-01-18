@@ -2,6 +2,7 @@ import config from 'config'
 import { APP_ROUTES } from '../../routes'
 import { session } from './session'
 import express = require('express')
+import cors = require('cors')
 const app:any = express()
 
 // hide "powered by"
@@ -9,6 +10,24 @@ app.disable('x-powered-by')
 
 // trust first proxy (e.g. Nginx reverse proxy)
 app.set('trust proxy', 1)
+
+// CORS options
+const options:cors.CorsOptions = {
+  allowedHeaders: [
+    "Origin", 
+    "X-Requested-With", 
+    "Content-Type", 
+    "Accept", 
+    "X-Access-Token"
+  ],
+  credentials: true,
+  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+  origin: config.get('cors.allowedOrigins'),
+  preflightContinue: false
+}
+
+// register cors MW
+app.use(cors(options))
 
 // register body parser MW
 app.use(express.json())

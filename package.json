@@ -15,6 +15,7 @@
     "bcrypt": "3.0.6",
     "config": "3.2.3",
     "connect-redis": "4.0.3",
+    "cors": "2.8.5",
     "express": "^4.17.1",
     "express-session": "1.17.0",
     "http-graceful-shutdown": "2.3.2",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@types/bcrypt": "3.0.0",
     "@types/config": "0.0.34",
+    "@types/cors": "2.8.6",
     "@types/express": "4.17.1",
     "@types/express-session": "1.15.15",
     "@types/ioredis": "4.0.18",
